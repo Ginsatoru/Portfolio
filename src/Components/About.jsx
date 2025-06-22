@@ -1,153 +1,194 @@
 import { motion } from "framer-motion";
-import { FaUser, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaCalendarAlt,
+  FaProjectDiagram,
+  FaSmile,
+  FaAward,
+  FaUser,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 const About = () => {
-  // Animation variants
   const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
 
   const item = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 },
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+      },
     },
   };
 
   const stats = [
-    { value: "3+", label: "Years Experience" },
-    { value: "10+", label: "Projects Completed" },
-    { value: "5+", label: "Happy Clients" },
-    { value: "3", label: "Awards Won" },
+    { value: "3+", label: "Years Experience", icon: <FaCalendarAlt /> },
+    { value: "10+", label: "Projects Completed", icon: <FaProjectDiagram /> },
+    { value: "5+", label: "Happy Clients", icon: <FaSmile /> },
+    { value: "3", label: "Awards Won", icon: <FaAward /> },
   ];
 
   return (
-    <section id="about" className="section">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5 }}
-        className="section-title"
-      >
-        About Me
-      </motion.h2>
+    <section id="about" className="py-20 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block text-sky-400">
+            About Me
+            <motion.span
+              className="absolute bottom-0 left-0"
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            />
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Get to know more about my experience, skills, and professional journey
+          </p>
+        </motion.div>
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="grid md:grid-cols-2 gap-12 items-center"
-      >
-        <motion.div variants={item}>
-          <motion.h3
-            className="text-2xl font-semibold mb-4 flex items-center gap-2"
-            whileHover={{ x: 5 }}
-          >
-            <FaUser className="text-blue-500" />
-            Who am I?
-          </motion.h3>
-
-          <motion.p
-            className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed"
-            whileInView={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            viewport={{ once: true }}
-          >
-            I'm a passionate web developer with 3 years of experience building
-            modern web applications. I specialize in React.js and enjoy
-            developing end-to-end solutions that provide exceptional user
-            experiences.
-          </motion.p>
-
-          <motion.p
-            className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"
-            whileInView={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            My journey in web development started when I was in college, and
-            I've been hooked ever since. I love the challenge of turning complex
-            problems into simple, beautiful solutions.
-          </motion.p>
-
-          <motion.div className="space-y-4" variants={container}>
-            <motion.div
-              className="flex items-center gap-3"
-              variants={item}
-              whileHover={{ x: 5 }}
-            >
-              <FaUser className="text-blue-500 min-w-[20px]" />
-              <div>
-                <span className="font-medium">Name:</span>
-                <span className="text-gray-700 dark:text-gray-300 ml-2">
-                  Bo Nai
-                </span>
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-2 gap-12 items-start"
+        >
+          {/* Left Column */}
+          <motion.div variants={item} className="space-y-8">
+            <motion.div className="p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700">
+              <div className="flex items-start gap-5">
+                <div className="p-3 bg-sky-100 dark:bg-sky-900/30 rounded-xl text-sky-500 dark:text-sky-400">
+                  <FaUser className="text-xl" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-3">Personal Info</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    I'm a passionate full-stack developer specializing in modern web technologies.
+                    With 3+ years of experience, I create efficient, scalable solutions with
+                    exceptional user experiences.
+                  </p>
+                </div>
               </div>
             </motion.div>
 
             <motion.div
-              className="flex items-center gap-3"
-              variants={item}
-              whileHover={{ x: 5 }}
+              className="p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700"
+              transition={{ delay: 0.1 }}
             >
-              <FaEnvelope className="text-blue-500 min-w-[20px]" />
-              <div>
-                <span className="font-medium">Email:</span>
-                <a
-                  href="mailto:naibo2002@gmail.com"
-                  className="text-gray-700 dark:text-gray-300 ml-2 hover:text-blue-500 transition-colors"
+              <div className="flex items-start gap-5">
+                <div className="p-3 bg-sky-100 dark:bg-sky-900/30 rounded-xl text-sky-500 dark:text-sky-400">
+                  <FaProjectDiagram className="text-xl" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-3">My Journey</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Started coding in college, fell in love with problem-solving through programming.
+                    I've worked on diverse projects from SaaS platforms to e-commerce solutions,
+                    always focusing on clean code and user-centric design.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4" variants={container}>
+              {/* Info Cards */}
+              {[
+                {
+                  icon: <FaUser />,
+                  label: "Name",
+                  value: "Bo Nai",
+                },
+                {
+                  icon: <FaEnvelope />,
+                  label: "Email",
+                  value: (
+                    <a
+                      href="mailto:naibo2002@gmail.com"
+                      className="font-medium hover:text-sky-500 dark:hover:text-sky-400 transition-colors"
+                    >
+                      naibo2002@gmail.com
+                    </a>
+                  ),
+                },
+                {
+                  icon: <FaMapMarkerAlt />,
+                  label: "Location",
+                  value: "Siem Reap, Cambodia",
+                },
+              ].map((info, i) => (
+                <motion.div
+                  key={i}
+                  variants={item}
+                  className="p-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:bg-sky-50 dark:hover:bg-gray-700/50 transition-colors"
+                  whileHover={{ x: 5 }}
                 >
-                  naibo2002@gmail.com
-                </a>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="flex items-center gap-3"
-              variants={item}
-              whileHover={{ x: 5 }}
-            >
-              <FaMapMarkerAlt className="text-blue-500 min-w-[20px]" />
-              <div>
-                <span className="font-medium">Location:</span>
-                <span className="text-gray-700 dark:text-gray-300 ml-2">
-                  Siem Reap, Cambodia
-                </span>
-              </div>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-sky-100 dark:bg-sky-900/30 rounded-lg text-sky-500 dark:text-sky-400">
+                      {info.icon}
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">{info.label}</div>
+                      <div className="font-medium">{info.value}</div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
-        </motion.div>
 
-        <motion.div className="grid grid-cols-2 gap-4" variants={container}>
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              whileHover={{ y: -5 }}
-              className="bg-blue-50 dark:bg-gray-800 p-6 rounded-xl border border-blue-100 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
-            >
-              <motion.h4
-                className="text-2xl font-bold mb-2 gradient-text"
-                whileHover={{ scale: 1.05 }}
+          {/* Right Column - Stats */}
+          <motion.div className="grid grid-cols-2 gap-5" variants={container}>
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                variants={item}
+                whileHover={{
+                  y: -8,
+                  scale: 1.03,
+                }}
+                className="group relative h-full"
               >
-                {stat.value}
-              </motion.h4>
-              <p className="text-gray-700 dark:text-gray-300">{stat.label}</p>
-            </motion.div>
-          ))}
+                <div className="h-full p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-sky-50 to-sky-100 dark:from-sky-900/10 dark:to-sky-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                  <div className="w-14 h-14 mb-4 rounded-full flex items-center justify-center border-2 border-sky-200 dark:border-sky-900 group-hover:border-sky-500 dark:group-hover:border-sky-400 transition-all duration-300 group-hover:bg-sky-100 dark:group-hover:bg-sky-900/20">
+                    <div className="text-sky-500 dark:text-sky-400 text-2xl transition-transform group-hover:scale-110">
+                      {stat.icon}
+                    </div>
+                  </div>
+                  <div>
+                    <h4 className="text-3xl font-bold text-gray-800 dark:text-white mb-1 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                      {stat.value}
+                    </h4>
+                    <p className="text-gray-600 dark:text-gray-300 group-hover:text-gray-800 dark:group-hover:text-gray-100 transition-colors">
+                      {stat.label}
+                    </p>
+                  </div>
+                  <div className="absolute bottom-0 left-0 h-1 bg-sky-500 w-0 group-hover:w-full transition-all duration-500 origin-left" />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };

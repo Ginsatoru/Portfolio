@@ -16,11 +16,12 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #38bdf8;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
 }
+
 
 .section {
   @apply py-20 px-4 max-w-6xl mx-auto;

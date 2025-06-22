@@ -7,6 +7,7 @@ import Projects from "./Components/Projects";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import "./Styles/App.css";
+import Technologies from "./Components/Tools";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -19,6 +20,7 @@ function App() {
           <Hero />
           <About />
           <Skills />
+          <Technologies />
           <Projects />
           <Contact />
         </main>
