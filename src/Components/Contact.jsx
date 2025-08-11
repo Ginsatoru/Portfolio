@@ -12,6 +12,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   });
 
@@ -35,32 +36,83 @@ const Contact = () => {
     setSubmitStatus({ success: null, message: "" });
 
     try {
+      // Initialize EmailJS
       emailjs.init("AxgTc5NzZpQrwYhjQ");
 
-      const result = await emailjs.send(
+      // Send the main contact email to you first
+      console.log("Sending main email...");
+      const mainEmailResult = await emailjs.send(
         "service_uinfooc",
         "template_0tayry7",
         {
           from_name: formData.name,
           from_email: formData.email,
+          subject: formData.subject || "New Contact Form Message",
           message: formData.message,
+          to_name: "Bo Nai", // Your name
+          reply_to: formData.email,
         }
       );
 
-      console.log("Email sent successfully:", result);
-      setSubmitStatus({
-        success: true,
-        message: "Message sent successfully! I will get back to you soon.",
-      });
-      setFormData({ name: "", email: "", message: "" });
+      console.log("Main email sent successfully:", mainEmailResult);
+
+      // Try to send auto-reply email to the user
+      try {
+        console.log("Sending auto-reply email...");
+        const autoReplyResult = await emailjs.send(
+          "service_uinfooc", // Same service ID
+          "template_mterprg", // Your auto-reply template ID
+          {
+            to_name: formData.name,
+            to_email: formData.email,
+            title: formData.subject || "General Inquiry", // Changed from 'subject' to 'title'
+            message: formData.message, // Changed from 'user_message' to 'message'
+            name: "Naibo", // Your name for the template
+            website_url: "https://naibo-portfolio.com", // Replace with your actual URL
+            linkedin_url: "https://linkedin.com/in/naibo", // Replace with your LinkedIn
+            portfolio_url: "https://naibo-portfolio.com", // Replace with your portfolio URL
+            email: "naibo2002@gmail.com", // Your email
+            location: "Siem Reap, Cambodia", // Your location
+          }
+        );
+
+        console.log("Auto-reply sent successfully:", autoReplyResult);
+
+        setSubmitStatus({
+          success: true,
+          message: "Message sent successfully! You should receive a confirmation email shortly. I'll get back to you within 24-48 hours.",
+        });
+
+      } catch (autoReplyError) {
+        console.warn("Auto-reply failed, but main email was sent:", autoReplyError);
+        
+        // Still show success since main email worked
+        setSubmitStatus({
+          success: true,
+          message: "Message sent successfully! I'll get back to you within 24-48 hours. (Note: Confirmation email may be delayed)",
+        });
+      }
+
+      // Clear form only if main email was successful
+      setFormData({ name: "", email: "", subject: "", message: "" });
+
     } catch (error) {
-      console.error("Failed to send email:", error);
+      console.error("Failed to send main email:", error);
+      
+      // More detailed error message
+      let errorMessage = "Failed to send message. ";
+      
+      if (error.text) {
+        errorMessage += `Error: ${error.text}. `;
+      } else if (error.message) {
+        errorMessage += `Error: ${error.message}. `;
+      }
+      
+      errorMessage += "Please try again later or contact me directly at naibo2002@gmail.com";
+
       setSubmitStatus({
         success: false,
-        message: `Failed to send message. ${
-          error.message ||
-          "Please try again later or contact me directly at naibo2002@gmail.com"
-        }`,
+        message: errorMessage,
       });
     } finally {
       setIsSubmitting(false);
@@ -137,7 +189,7 @@ const Contact = () => {
           >
             Feel free to reach out if you're looking for a developer, have a
             question, or just want to connect. I'll get back to you as soon as
-            possible.
+            possible and you'll receive an automatic confirmation email.
           </motion.p>
 
           <motion.div className="space-y-4" variants={container}>
@@ -184,7 +236,7 @@ const Contact = () => {
               variants={item}
               whileHover={{ x: 5 }}
             >
-              <div className="mt-1 text-blue-500 dark:text-blue-400">
+              <div className="mt-1 text-blue-5000 dark:text-blue-400">
                 <FaMapMarkerAlt className="text-xl" />
               </div>
               <div>
@@ -205,7 +257,7 @@ const Contact = () => {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
               >
-                Name
+                Name *
               </label>
               <input
                 type="text"
@@ -216,6 +268,7 @@ const Contact = () => {
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300"
                 required
                 disabled={isSubmitting}
+                placeholder="Your full name"
               />
             </div>
 
@@ -224,7 +277,7 @@ const Contact = () => {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
               >
-                Email
+                Email *
               </label>
               <input
                 type="email"
@@ -235,6 +288,26 @@ const Contact = () => {
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300"
                 required
                 disabled={isSubmitting}
+                placeholder="your.email@example.com"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="subject"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+              >
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300"
+                disabled={isSubmitting}
+                placeholder="Project inquiry, collaboration, etc."
               />
             </div>
 
@@ -243,7 +316,7 @@ const Contact = () => {
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
               >
-                Message
+                Message *
               </label>
               <textarea
                 id="message"
@@ -254,6 +327,7 @@ const Contact = () => {
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white transition-all duration-300"
                 required
                 disabled={isSubmitting}
+                placeholder="Tell me about your project or inquiry..."
               ></textarea>
             </div>
 
@@ -295,6 +369,10 @@ const Contact = () => {
                 </>
               )}
             </motion.button>
+
+            <p className="text-sm text-gray-500 dark:text-gray-400 text-center mt-4">
+              📧 You'll receive an automatic confirmation email after submitting
+            </p>
           </form>
         </motion.div>
       </motion.div>
