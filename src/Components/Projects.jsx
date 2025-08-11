@@ -17,20 +17,20 @@ const projects = [
   {
     title: "IT Services Platform",
     description:
-      "A task management tool for IT teams with drag-and-drop features and real-time collaboration.",
-    technologies: ["React", "Firebase", "Tailwind CSS", "Emailjs"],
+      "A customer support and IT service management platform with real-time ticket tracking, task assignment, and efficient team collaboration.",
+    technologies: ["React", "Tailwind CSS", "Node.js", "MongoDB"],
     image: IT,
-    demoLink: "#",
-    codeLink: "#",
+    demoLink: "https://www.wvsupportservices.com/",
+    codeLink: "https://github.com/Ginsatoru/wvsupport",
   },
   {
-    title: "Hotel Reservation",
+    title: "Library Management System",
     description:
-      "Book hotels easily with real-time weather updates and 5-day location-based forecasts.",
-    technologies: ["React", "Node.js", "MongoDB", "Express"],
+      "Manage library resources effortlessly with real-time book availability and automated due-date reminders.",
+    technologies: ["React", "Tailwind", "ASP.NET", "SQL Server"],
     image: Hotel,
-    demoLink: "#",
-    codeLink: "#",
+    demoLink: "https://bbu-e-library.netlify.app/",
+    codeLink: "https://github.com/Ginsatoru/library-system",
   },
 ];
 
@@ -74,13 +74,6 @@ const Projects = () => {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
             My Projects
-            <motion.span
-              className="absolute bottom-0 left-0 h-1 bg-blue-500"
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Here are some of my featured projects with modern technologies

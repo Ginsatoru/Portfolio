@@ -1,19 +1,24 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
-import emailjs from '@emailjs/browser';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaPaperPlane,
+} from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({
     success: null,
-    message: '',
+    message: "",
   });
 
   const handleChange = (e) => {
@@ -27,16 +32,14 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ success: null, message: '' });
+    setSubmitStatus({ success: null, message: "" });
 
     try {
-      // Initialize EmailJS with your Public Key
-      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+      emailjs.init("AxgTc5NzZpQrwYhjQ");
 
-      // Send the email using EmailJS
       const result = await emailjs.send(
-        'YOUR_EMAILJS_SERVICE_ID',
-        'YOUR_EMAILJS_TEMPLATE_ID',
+        "service_uinfooc",
+        "template_0tayry7",
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -44,32 +47,31 @@ const Contact = () => {
         }
       );
 
-      console.log('Email sent successfully:', result);
+      console.log("Email sent successfully:", result);
       setSubmitStatus({
         success: true,
-        message: 'Message sent successfully! I will get back to you soon.',
+        message: "Message sent successfully! I will get back to you soon.",
       });
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error('Failed to send email:', error);
+      console.error("Failed to send email:", error);
       setSubmitStatus({
         success: false,
-        message: `Failed to send message. ${error.message || 'Please try again later or contact me directly at naibo2002@gmail.com'}`,
+        message: `Failed to send message. ${
+          error.message ||
+          "Please try again later or contact me directly at naibo2002@gmail.com"
+        }`,
       });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-
-  // Animation variants
   const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
@@ -83,7 +85,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section bg-gray-50 dark:bg-gray-800/50 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+    <section
+      id="contact"
+      className="section bg-gray-50 dark:bg-gray-800/50 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 pb-24"
+    >
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -99,9 +104,9 @@ const Contact = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className={`mb-8 p-4 rounded-lg text-center ${
-            submitStatus.success 
-              ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-              : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
+            submitStatus.success
+              ? "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200"
+              : "bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200"
           }`}
         >
           {submitStatus.message}
@@ -115,29 +120,28 @@ const Contact = () => {
         viewport={{ once: true, margin: "-100px" }}
         className="grid md:grid-cols-2 gap-12"
       >
+        {/* Contact Info */}
         <motion.div variants={item}>
-          <motion.h3 
+          <motion.h3
             className="text-xl font-semibold mb-4"
             whileHover={{ x: 5 }}
           >
             Contact Information
           </motion.h3>
-          
-          <motion.p 
+
+          <motion.p
             className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed"
             whileInView={{ opacity: 1 }}
             initial={{ opacity: 0 }}
             viewport={{ once: true }}
           >
             Feel free to reach out if you're looking for a developer, have a
-            question, or just want to connect. I'll get back to you as soon as possible.
+            question, or just want to connect. I'll get back to you as soon as
+            possible.
           </motion.p>
-          
-          <motion.div 
-            className="space-y-4"
-            variants={container}
-          >
-            <motion.div 
+
+          <motion.div className="space-y-4" variants={container}>
+            <motion.div
               className="flex items-start gap-4"
               variants={item}
               whileHover={{ x: 5 }}
@@ -155,8 +159,8 @@ const Contact = () => {
                 </a>
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="flex items-start gap-4"
               variants={item}
               whileHover={{ x: 5 }}
@@ -174,8 +178,8 @@ const Contact = () => {
                 </a>
               </div>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="flex items-start gap-4"
               variants={item}
               whileHover={{ x: 5 }}
@@ -193,13 +197,10 @@ const Contact = () => {
           </motion.div>
         </motion.div>
 
+        {/* Contact Form */}
         <motion.div variants={item}>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+            <div>
               <label
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
@@ -216,14 +217,9 @@ const Contact = () => {
                 required
                 disabled={isSubmitting}
               />
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
+            </div>
+
+            <div>
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
@@ -240,14 +236,9 @@ const Contact = () => {
                 required
                 disabled={isSubmitting}
               />
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
+            </div>
+
+            <div>
               <label
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
@@ -264,37 +255,46 @@ const Contact = () => {
                 required
                 disabled={isSubmitting}
               ></textarea>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+            </div>
+
+            <motion.button
+              type="submit"
+              className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 w-full flex items-center justify-center gap-2 shadow-md hover:shadow-lg disabled:opacity-70"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              disabled={isSubmitting}
             >
-              <motion.button
-                type="submit"
-                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 w-full flex items-center justify-center gap-2 shadow-md hover:shadow-lg disabled:opacity-70"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <FaPaperPlane />
-                    Send Message
-                  </>
-                )}
-              </motion.button>
-            </motion.div>
+              {isSubmitting ? (
+                <>
+                  <svg
+                    className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <FaPaperPlane />
+                  Send Message
+                </>
+              )}
+            </motion.button>
           </form>
         </motion.div>
       </motion.div>
