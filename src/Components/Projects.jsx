@@ -58,28 +58,65 @@ const fadeUp = {
   },
 };
 
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+  hover: {
+    y: -6,
+    scale: 1.02,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
+
 const Projects = () => {
   return (
     <section
       id="projects"
-      className="max-w-7xl mx-auto py-20 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900"
+      className="relative py-20 bg-white dark:bg-gray-900 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
+
+      <div className="relative w-full sm:w-[90%] lg:w-[80%] max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
           className="text-center mb-16"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeUp}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
-            My Projects
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Here are some of my featured projects with modern technologies
-          </p>
+          <motion.p
+            variants={fadeUp}
+            className="text-sky-600 dark:text-sky-400 font-semibold tracking-wider uppercase text-xs sm:text-sm mb-4"
+          >
+            My Work
+          </motion.p>
+          <motion.h2
+            variants={fadeUp}
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            Featured Projects
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            className="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6"
+          >
+            Here are some of my featured projects built with modern technologies
+            and best practices
+          </motion.p>
         </motion.div>
 
+        {/* Projects Grid */}
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={container}
@@ -90,11 +127,11 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              variants={fadeUp}
-              whileHover={{ y: -8 }}
+              variants={cardVariants}
+              whileHover="hover"
               className="group relative h-full"
             >
-              <div className="h-full flex flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
+              <div className="h-full flex flex-col bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700">
                 {/* Image with overlay effect */}
                 <div className="relative overflow-hidden">
                   <motion.img
@@ -105,7 +142,7 @@ const Projects = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.5 }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                       <h3 className="text-xl font-bold text-white">
                         {project.title}
@@ -117,10 +154,10 @@ const Projects = () => {
                 {/* Content */}
                 <div className="p-6 flex-grow flex flex-col">
                   <div className="mb-4">
-                    <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                       {project.description}
                     </p>
                   </div>
@@ -129,13 +166,12 @@ const Projects = () => {
                   <div className="mt-auto">
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.technologies.map((tech, i) => (
-                        <motion.span
+                        <span
                           key={i}
-                          whileHover={{ y: -2 }}
-                          className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-800/50 transition-colors"
+                          className="px-3 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-800 dark:text-sky-300 rounded-full text-xs font-medium"
                         >
                           {tech}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
 
@@ -145,22 +181,22 @@ const Projects = () => {
                         href={project.demoLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-sm hover:shadow-md"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-sky-600 text-white rounded-xl hover:bg-sky-700 transition-colors duration-300 shadow-sm hover:shadow-md text-sm font-medium"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                       >
-                        <FiExternalLink />
+                        <FiExternalLink className="text-base" />
                         Live Demo
                       </motion.a>
                       <motion.a
                         href={project.codeLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 text-sm font-medium"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.97 }}
                       >
-                        <FiGithub />
+                        <FiGithub className="text-base" />
                         Code
                       </motion.a>
                     </div>
@@ -169,6 +205,19 @@ const Projects = () => {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Footer Note */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mt-16"
+        >
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
+            Interested in working together? Feel free to reach out!
+          </p>
         </motion.div>
       </div>
     </section>
