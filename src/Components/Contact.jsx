@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
   FaPaperPlane,
+  FaCheckCircle,
+  FaTimesCircle,
+  FaTimes,
 } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
@@ -17,6 +20,7 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({
     success: null,
     message: "",
@@ -33,23 +37,22 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus({ success: null, message: "" });
 
     try {
-      // Initialize EmailJS
+      // Initialize EmailJS with your Public Key
       emailjs.init("AxgTc5NzZpQrwYhjQ");
 
-      // Send the main contact email to you first
+      // Send the main contact email
       console.log("Sending main email...");
       const mainEmailResult = await emailjs.send(
-        "service_uinfooc",
-        "template_0tayry7",
+        "service_eit1i65",
+        "template_rtuwrxj",
         {
           from_name: formData.name,
           from_email: formData.email,
           subject: formData.subject || "New Contact Form Message",
           message: formData.message,
-          to_name: "Bo Nai", // Your name
+          to_name: "Bo Nai",
           reply_to: formData.email,
         }
       );
@@ -60,19 +63,19 @@ const Contact = () => {
       try {
         console.log("Sending auto-reply email...");
         const autoReplyResult = await emailjs.send(
-          "service_uinfooc", // Same service ID
-          "template_mterprg", // Your auto-reply template ID
+          "service_eit1i65",
+          "template_n2vnbjn",
           {
             to_name: formData.name,
             to_email: formData.email,
-            title: formData.subject || "General Inquiry", // Changed from 'subject' to 'title'
-            message: formData.message, // Changed from 'user_message' to 'message'
-            name: "Naibo", // Your name for the template
-            website_url: "https://naibo-portfolio.com", // Replace with your actual URL
-            linkedin_url: "https://linkedin.com/in/naibo", // Replace with your LinkedIn
-            portfolio_url: "https://naibo-portfolio.com", // Replace with your portfolio URL
-            email: "naibo2002@gmail.com", // Your email
-            location: "Siem Reap, Cambodia", // Your location
+            title: formData.subject || "General Inquiry",
+            message: formData.message,
+            name: "Bo Nai",
+            website_url: "https://bo-nai.netlify.app",
+            linkedin_url: "https://www.linkedin.com/in/bo-nai-601296209",
+            portfolio_url: "https://bo-nai.netlify.app",
+            email: "naibo2002@gmail.com",
+            location: "Siem Reap, Cambodia",
           }
         );
 
@@ -89,7 +92,6 @@ const Contact = () => {
           autoReplyError
         );
 
-        // Still show success since main email worked
         setSubmitStatus({
           success: true,
           message:
@@ -97,12 +99,12 @@ const Contact = () => {
         });
       }
 
-      // Clear form only if main email was successful
+      // Clear form and show modal
       setFormData({ name: "", email: "", subject: "", message: "" });
+      setShowModal(true);
     } catch (error) {
       console.error("Failed to send main email:", error);
 
-      // More detailed error message
       let errorMessage = "Failed to send message. ";
 
       if (error.text) {
@@ -118,9 +120,14 @@ const Contact = () => {
         success: false,
         message: errorMessage,
       });
+      setShowModal(true);
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   const fadeUp = {
@@ -174,6 +181,101 @@ const Contact = () => {
       <div className="absolute top-0 left-0 w-64 h-64 bg-sky-100/40 dark:bg-sky-900/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-100/30 dark:bg-blue-900/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
+      {/* Success/Error Modal */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-md w-full p-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={closeModal}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              >
+                <FaTimes className="text-xl" />
+              </button>
+
+              {/* Icon with Animation */}
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="flex justify-center mb-6"
+              >
+                {submitStatus.success ? (
+                  <motion.div
+                    initial={{ rotate: 0 }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="w-20 h-20 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center"
+                  >
+                    <FaCheckCircle className="text-5xl text-sky-600 dark:text-sky-400" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    initial={{ rotate: 0 }}
+                    animate={{ rotate: [0, -10, 10, -10, 0] }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="w-20 h-20 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center"
+                  >
+                    <FaTimesCircle className="text-5xl text-red-600 dark:text-red-400" />
+                  </motion.div>
+                )}
+              </motion.div>
+
+              {/* Title */}
+              <motion.h3
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-4"
+              >
+                {submitStatus.success ? "Message Sent!" : "Oops!"}
+              </motion.h3>
+
+              {/* Message */}
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="text-center text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
+              >
+                {submitStatus.message}
+              </motion.p>
+
+              {/* Button */}
+              <motion.button
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                onClick={closeModal}
+                className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 ${
+                  submitStatus.success
+                    ? "bg-sky-600 hover:bg-sky-700 text-white"
+                    : "bg-red-600 hover:bg-red-700 text-white"
+                }`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {submitStatus.success ? "Great!" : "Try Again"}
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="relative w-full sm:w-[90%] lg:w-[80%] max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -203,20 +305,6 @@ const Contact = () => {
             create something amazing together.
           </motion.p>
         </motion.div>
-
-        {submitStatus.message && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={`mb-8 p-6 rounded-2xl text-center ${
-              submitStatus.success
-                ? "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800"
-                : "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800"
-            }`}
-          >
-            {submitStatus.message}
-          </motion.div>
-        )}
 
         <motion.div
           variants={container}
@@ -303,7 +391,7 @@ const Contact = () => {
                 Send Me a Message
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-6">
                 <div>
                   <label
                     htmlFor="name"
@@ -384,7 +472,8 @@ const Contact = () => {
                 </div>
 
                 <motion.button
-                  type="submit"
+                  type="button"
+                  onClick={handleSubmit}
                   className="w-full px-6 py-4 bg-sky-600 text-white rounded-xl hover:bg-sky-700 transition-all duration-300 flex items-center justify-center gap-3 shadow-sm hover:shadow-md disabled:opacity-70 text-base font-semibold"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -426,7 +515,7 @@ const Contact = () => {
                   📧 You'll receive an automatic confirmation email after
                   submitting
                 </p>
-              </form>
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>
