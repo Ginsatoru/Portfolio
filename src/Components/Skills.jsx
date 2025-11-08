@@ -6,10 +6,9 @@ import {
   FaReact,
   FaGitAlt,
   FaFigma,
-  FaDatabase,
   FaNodeJs,
 } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiAdobexd } from "react-icons/si";
+import { SiMongodb } from "react-icons/si";
 
 const skills = [
   {

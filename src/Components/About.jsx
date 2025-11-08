@@ -8,7 +8,6 @@ import {
   FaCode,
   FaRocket,
   FaUser,
-  FaMapMarkerAlt,
 } from "react-icons/fa";
 
 // Enhanced Count-up animation hook
