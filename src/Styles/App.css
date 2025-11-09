@@ -1,0 +1,359 @@
+/* ============================================
+   APP-LEVEL COMPONENT STYLES
+   ============================================ */
+
+/* Main App Container */
+.app-container {
+  @apply min-h-screen;
+  @apply bg-gradient-to-br from-gray-50 via-white to-blue-50;
+  @apply dark:from-dark-950 dark:via-dark-900 dark:to-dark-800;
+  @apply transition-colors duration-500;
+}
+
+/* ============================================
+   HEADER NAVIGATION STYLES
+   ============================================ */
+
+.nav-blur {
+  @apply backdrop-blur-md bg-white/80 dark:bg-dark-900/80;
+  @apply border-b border-gray-200/50 dark:border-dark-700/50;
+  @apply transition-all duration-300;
+}
+
+.nav-link {
+  @apply relative px-4 py-2 rounded-lg;
+  @apply text-gray-700 dark:text-gray-300;
+  @apply font-medium text-sm;
+  @apply transition-all duration-300;
+  @apply hover:text-primary-600 dark:hover:text-primary-400;
+  @apply hover:bg-gray-100 dark:hover:bg-dark-800;
+}
+
+.nav-link.active {
+  @apply text-primary-600 dark:text-primary-400;
+  @apply bg-primary-50 dark:bg-primary-900/20;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-1/2 -translate-x-1/2;
+  @apply w-0 h-0.5 bg-primary-500;
+  @apply transition-all duration-300;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  @apply w-3/4;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  @apply fixed inset-0 z-50;
+  @apply bg-white dark:bg-dark-900;
+  @apply transform translate-x-full;
+  @apply transition-transform duration-300;
+}
+
+.mobile-menu.open {
+  @apply translate-x-0;
+}
+
+/* ============================================
+   HERO SECTION STYLES
+   ============================================ */
+
+.hero-gradient {
+  @apply bg-gradient-to-br from-blue-50 via-white to-purple-50;
+  @apply dark:from-dark-900 dark:via-dark-800 dark:to-purple-900/20;
+}
+
+.hero-title {
+  @apply text-5xl md:text-6xl lg:text-7xl;
+  @apply font-display font-extrabold;
+  @apply leading-tight tracking-tight;
+  @apply mb-6;
+}
+
+.hero-subtitle {
+  @apply text-xl md:text-2xl lg:text-3xl;
+  @apply text-gray-600 dark:text-gray-400;
+  @apply mb-8 max-w-3xl;
+}
+
+/* Animated Background Elements */
+.hero-bg-element {
+  @apply absolute rounded-full blur-3xl opacity-20;
+  @apply animate-float;
+  pointer-events: none;
+}
+
+.hero-bg-element-1 {
+  @apply hero-bg-element;
+  @apply bg-primary-500;
+  @apply w-96 h-96;
+  @apply top-0 -left-48;
+  animation-delay: 0s;
+}
+
+.hero-bg-element-2 {
+  @apply hero-bg-element;
+  @apply bg-accent-500;
+  @apply w-80 h-80;
+  @apply bottom-0 -right-40;
+  animation-delay: 2s;
+}
+
+.hero-bg-element-3 {
+  @apply hero-bg-element;
+  @apply bg-purple-500;
+  @apply w-64 h-64;
+  @apply top-1/2 left-1/2;
+  animation-delay: 4s;
+}
+
+/* ============================================
+   PROJECT SHOWCASE STYLES
+   ============================================ */
+
+.project-image-container {
+  @apply relative overflow-hidden rounded-t-2xl;
+  @apply aspect-video;
+  @apply bg-gradient-to-br from-gray-100 to-gray-200;
+  @apply dark:from-dark-700 dark:to-dark-600;
+}
+
+.project-image {
+  @apply w-full h-full object-cover object-top;
+  @apply transition-transform duration-700;
+  @apply group-hover:scale-110;
+}
+
+.project-overlay {
+  @apply absolute inset-0;
+  @apply bg-gradient-to-t from-black/80 via-black/40 to-transparent;
+  @apply opacity-0 group-hover:opacity-100;
+  @apply transition-opacity duration-500;
+  @apply flex items-end justify-between p-6;
+}
+
+.project-tech-stack {
+  @apply flex flex-wrap gap-2 mt-4;
+}
+
+.tech-badge {
+  @apply inline-flex items-center gap-1.5;
+  @apply px-3 py-1.5 rounded-full;
+  @apply text-xs font-semibold;
+  @apply bg-primary-100 text-primary-700;
+  @apply dark:bg-primary-900/30 dark:text-primary-300;
+  @apply hover:scale-105 transition-transform;
+}
+
+/* ============================================
+   SKILLS & TOOLS GRID
+   ============================================ */
+
+.skills-grid {
+  @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+  @apply gap-4 md:gap-6;
+}
+
+.skill-card {
+  @apply bg-gradient-to-br from-gray-50 to-gray-100;
+  @apply dark:from-dark-800 dark:to-dark-700;
+  @apply rounded-xl p-6;
+  @apply transition-all duration-400;
+  @apply border border-gray-200 dark:border-dark-600;
+  @apply hover:scale-105 hover:shadow-glow;
+  @apply hover:border-primary-300 dark:hover:border-primary-700;
+  @apply cursor-default;
+  @apply flex flex-col items-center gap-3;
+  @apply text-center;
+}
+
+.skill-icon {
+  @apply text-4xl md:text-5xl;
+  @apply text-primary-600 dark:text-primary-400;
+  @apply transition-transform duration-300;
+  @apply group-hover:scale-110 group-hover:rotate-6;
+}
+
+.skill-name {
+  @apply text-sm md:text-base font-semibold;
+  @apply text-gray-800 dark:text-gray-200;
+}
+
+/* ============================================
+   CONTACT FORM STYLES
+   ============================================ */
+
+.contact-form {
+  @apply space-y-6 max-w-2xl mx-auto;
+}
+
+.form-group {
+  @apply space-y-2;
+}
+
+.form-label {
+  @apply block text-sm font-semibold;
+  @apply text-gray-700 dark:text-gray-300;
+  @apply mb-2;
+}
+
+.form-input {
+  @apply w-full px-4 py-3 rounded-xl;
+  @apply bg-white dark:bg-dark-800;
+  @apply border-2 border-gray-200 dark:border-dark-700;
+  @apply text-gray-900 dark:text-gray-100;
+  @apply placeholder:text-gray-400 dark:placeholder:text-gray-500;
+  @apply transition-all duration-300;
+  @apply focus:outline-none;
+}
+
+.form-input:focus {
+  @apply border-primary-500 ring-2 ring-primary-500/20;
+}
+
+.form-error {
+  @apply text-red-500 text-sm mt-1;
+  @apply animate-fade-in;
+}
+
+.form-success {
+  @apply bg-green-50 dark:bg-green-900/20;
+  @apply border border-green-200 dark:border-green-800;
+  @apply text-green-700 dark:text-green-300;
+  @apply px-4 py-3 rounded-xl;
+  @apply animate-fade-in;
+}
+
+/* ============================================
+   FOOTER STYLES
+   ============================================ */
+
+.footer {
+  @apply bg-gradient-to-br from-gray-900 to-dark-950;
+  @apply text-gray-300;
+  @apply border-t border-gray-800;
+}
+
+.footer-link {
+  @apply text-gray-400 hover:text-primary-400;
+  @apply transition-colors duration-300;
+  @apply hover:underline decoration-primary-400 underline-offset-4;
+}
+
+.social-icon {
+  @apply w-10 h-10 rounded-full;
+  @apply bg-gray-800 hover:bg-primary-600;
+  @apply flex items-center justify-center;
+  @apply text-gray-300 hover:text-white;
+  @apply transition-all duration-300;
+  @apply hover:scale-110 hover:-translate-y-1;
+  @apply hover:shadow-glow;
+}
+
+/* ============================================
+   LOADING & TRANSITION STATES
+   ============================================ */
+
+.loading-spinner {
+  @apply animate-spin;
+  @apply border-4 border-gray-200;
+  @apply border-t-primary-600;
+  @apply rounded-full;
+  @apply w-12 h-12;
+}
+
+.skeleton {
+  @apply bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200;
+  @apply dark:from-dark-800 dark:via-dark-700 dark:to-dark-800;
+  @apply animate-pulse;
+  @apply rounded-lg;
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   SCROLL PROGRESS INDICATOR
+   ============================================ */
+
+.scroll-progress {
+  @apply fixed top-0 left-0 right-0;
+  @apply h-1 bg-primary-600;
+  @apply z-50;
+  @apply transform origin-left;
+  @apply transition-transform duration-150;
+}
+
+/* ============================================
+   TOOLTIP STYLES
+   ============================================ */
+
+.tooltip {
+  @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2;
+  @apply bg-gray-900 dark:bg-gray-100;
+  @apply text-white dark:text-gray-900;
+  @apply text-xs font-medium;
+  @apply px-3 py-1.5 rounded-lg;
+  @apply opacity-0 pointer-events-none;
+  @apply transition-opacity duration-300;
+  @apply whitespace-nowrap;
+}
+
+.tooltip::after {
+  content: '';
+  @apply absolute top-full left-1/2 -translate-x-1/2;
+  @apply border-4 border-transparent;
+  @apply border-t-gray-900 dark:border-t-gray-100;
+}
+
+*:hover > .tooltip {
+  @apply opacity-100;
+}
+
+/* ============================================
+   THEME TOGGLE ANIMATION
+   ============================================ */
+
+.theme-toggle {
+  @apply relative w-14 h-7 rounded-full;
+  @apply bg-gray-300 dark:bg-dark-700;
+  @apply transition-colors duration-300;
+  @apply cursor-pointer;
+}
+
+.theme-toggle-slider {
+  @apply absolute top-1 left-1;
+  @apply w-5 h-5 rounded-full;
+  @apply bg-white shadow-md;
+  @apply transition-transform duration-300;
+  @apply transform translate-x-0;
+}
+
+.dark .theme-toggle-slider {
+  @apply translate-x-7;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+@media (max-width: 768px) {
+  .section {
+    @apply py-12;
+  }
+
+  .hero-title {
+    @apply text-4xl;
+  }
+
+  .hero-subtitle {
+    @apply text-lg;
+  }
+
+  .skills-grid {
+    @apply grid-cols-2 gap-3;
+  }
+}

@@ -1,165 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <!-- Favicons -->
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0284c7" />
-  <meta name="description" content="Bo Nai - Web Developer Portfolio. Crafting modern, responsive web experiences with cutting-edge technologies." />
-  <meta name="keywords" content="web developer, portfolio, react, javascript, frontend developer, Bo Nai" />
-  <meta name="author" content="Bo Nai" />
-  
-  <!-- Open Graph / Social Media -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Bo Nai | Web Developer" />
-  <meta property="og:description" content="Crafting modern, responsive web experiences with cutting-edge technologies." />
-  
-  <!-- Web App Manifest -->
-  <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
-  
-  <!-- Preconnect to Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <title>Bo Nai | Web Developer</title>
-</head>
-<body>
-  <noscript>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Primary Meta Tags -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="theme-color"
+      content="#0284c7"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#1e293b"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="description"
+      content="Bo Nai - Full-Stack Web Developer specializing in React, Node.js, and modern web technologies. Crafting performant, accessible, and beautiful digital experiences."
+    />
+    <meta
+      name="keywords"
+      content="web developer, full-stack developer, react developer, javascript expert, frontend engineer, Bo Nai, portfolio, UI/UX, web design"
+    />
+    <meta name="author" content="Bo Nai" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bonai.dev/" />
+    <meta property="og:title" content="Bo Nai | Full-Stack Web Developer" />
+    <meta
+      property="og:description"
+      content="Crafting performant, accessible, and beautiful digital experiences with React, Node.js, and modern web technologies."
+    />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://bonai.dev/" />
+    <meta name="twitter:title" content="Bo Nai | Full-Stack Web Developer" />
+    <meta
+      name="twitter:description"
+      content="Crafting performant, accessible, and beautiful digital experiences."
+    />
+    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%PUBLIC_URL%/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="%PUBLIC_URL%/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="%PUBLIC_URL%/apple-touch-icon.png"
+    />
+    <link
+      rel="mask-icon"
+      href="%PUBLIC_URL%/safari-pinned-tab.svg"
+      color="#0284c7"
+    />
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts - Optimized Loading -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Preload Critical Assets -->
+    <link
+      rel="preload"
+      as="image"
+      href="%PUBLIC_URL%/logo.png"
+      type="image/png"
+    />
+
+    <!-- DNS Prefetch for External Resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+
+    <title>BO NAI | Web Developer</title>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bo Nai",
+        "url": "https://bonai.dev",
+        "jobTitle": "Full-Stack Web Developer",
+        "description": "Experienced web developer specializing in React, JavaScript, and modern web technologies",
+        "email": "naibo2002@gmail.com",
+        "sameAs": ["https://github.com/bonai", "https://linkedin.com/in/bonai"]
       }
-      
-      body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        background: #f8fafc;
-        padding: 2rem;
-      }
-      
-      .container {
-        background: white;
-        border-radius: 20px;
-        padding: 3rem 2.5rem;
-        max-width: 500px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        border-top: 4px solid #0284c7;
-      }
-      
-      .icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 1.5rem;
-        background: #0284c7;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-      }
-      
-      h1 {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #1a202c;
-        margin-bottom: 1rem;
-        letter-spacing: -0.02em;
-      }
-      
-      p {
-        font-size: 1rem;
-        color: #4a5568;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-      }
-      
-      .cta {
-        display: inline-block;
-        background: #0284c7;
-        color: white;
-        text-decoration: none;
-        padding: 0.875rem 2rem;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        transition: background 0.2s, transform 0.2s;
-      }
-      
-      .cta:hover {
-        background: #0369a1;
-        transform: translateY(-2px);
-      }
-      
-      .divider {
-        margin: 2rem 0 1.5rem;
-        color: #cbd5e0;
-        font-size: 0.875rem;
-        font-weight: 600;
-      }
-      
-      .instructions {
-        background: #f1f5f9;
-        border-radius: 12px;
-        padding: 1.25rem;
-        font-size: 0.875rem;
-        color: #4a5568;
-        text-align: left;
-        line-height: 1.6;
-        border-left: 3px solid #0284c7;
-      }
-      
-      .instructions strong {
-        color: #2d3748;
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-      
-      @media (max-width: 640px) {
-        .container {
-          padding: 2rem 1.5rem;
+    </script>
+  </head>
+  <body>
+    <!-- Enhanced No-JavaScript Fallback -->
+    <noscript>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
         }
-        
+
+        body {
+          font-family: "Inter", "Poppins", -apple-system, BlinkMacSystemFont,
+            "Segoe UI", sans-serif;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          background: #f8fafc;
+          padding: 1.5rem;
+          line-height: 1.6;
+        }
+
+        .noscript-container {
+          background: white;
+          border-radius: 20px;
+          padding: 2.5rem 2.5rem;
+          max-width: 520px;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+          border: 1px solid #e2e8f0;
+        }
+
+        .noscript-container::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: #0284c7;
+        }
+
+        .icon-wrapper {
+          width: 70px;
+          height: 70px;
+          margin: 0 auto 1.25rem;
+          background: #0284c7;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2rem;
+        }
+
         h1 {
-          font-size: 1.5rem;
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: #0f172a;
+          margin-bottom: 0.5rem;
+          letter-spacing: -0.02em;
         }
-        
+
+        .subtitle {
+          font-size: 0.9375rem;
+          color: #64748b;
+          margin-bottom: 1rem;
+          font-weight: 500;
+        }
+
         p {
           font-size: 0.9375rem;
+          color: #475569;
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
         }
-      }
-    </style>
-    
-    <div class="container">
-      <div class="icon">⚡</div>
-      <h1>JavaScript Required</h1>
-      <p>
-        This portfolio uses modern web technologies that require JavaScript to function properly. 
-        Please enable JavaScript in your browser to view the full experience.
-      </p>
-      <a href="mailto:naibo2002@gmail.com" class="cta">Contact Me via Email</a>
-      
-      <div class="divider">— OR —</div>
-      
-      <div class="instructions">
-        <strong>How to enable JavaScript:</strong>
-        Open your browser settings, search for "JavaScript", and toggle it on. 
-        Then refresh this page to continue.
-      </div>
-    </div>
-  </noscript>
 
-  <div id="root"></div>
-</body>
+        .cta-primary {
+          display: inline-block;
+          background: #0284c7;
+          color: white;
+          text-decoration: none;
+          padding: 0.875rem 2rem;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 0.9375rem;
+          transition: background 0.2s ease;
+          margin-bottom: 1rem;
+        }
+
+        .cta-primary:hover {
+          background: #0369a1;
+        }
+
+        .divider {
+          margin: 1.5rem 0 1.25rem;
+          color: #cbd5e0;
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          width: 38%;
+          height: 1px;
+          background: #e2e8f0;
+        }
+
+        .divider::before {
+          left: 0;
+        }
+        .divider::after {
+          right: 0;
+        }
+
+        .instructions {
+          background: #f8fafc;
+          border-radius: 12px;
+          padding: 1.5rem;
+          font-size: 0.875rem;
+          color: #475569;
+          text-align: left;
+          line-height: 1.6;
+          border-left: 3px solid #0284c7;
+        }
+
+        .instructions strong {
+          color: #0f172a;
+          display: block;
+          margin-bottom: 0.75rem;
+          font-size: 0.9375rem;
+          font-weight: 700;
+        }
+
+        .instructions ol {
+          margin-left: 1.25rem;
+          margin-top: 0.5rem;
+        }
+
+        .instructions li {
+          margin-bottom: 0.5rem;
+          padding-left: 0.25rem;
+        }
+
+        .instructions li::marker {
+          color: #0284c7;
+          font-weight: 600;
+        }
+
+        @media (max-width: 640px) {
+          body {
+            padding: 1rem;
+          }
+
+          .noscript-container {
+            padding: 2rem 1.75rem;
+          }
+
+          .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            font-size: 1.75rem;
+          }
+
+          h1 {
+            font-size: 1.5rem;
+          }
+
+          .subtitle {
+            font-size: 0.875rem;
+          }
+
+          p {
+            font-size: 0.875rem;
+          }
+
+          .cta-primary {
+            padding: 0.75rem 1.75rem;
+            font-size: 0.875rem;
+          }
+
+          .instructions {
+            padding: 1.25rem;
+          }
+        }
+      </style>
+
+      <div class="noscript-container">
+        <div class="icon-wrapper">⚡</div>
+        <h1>JavaScript Required</h1>
+        <p class="subtitle">Welcome to Bo Nai's Portfolio</p>
+        <p>
+          This portfolio uses modern web technologies that require JavaScript.
+          Please enable JavaScript to view the full site.
+        </p>
+
+        <a href="mailto:naibo2002@gmail.com" class="cta-primary"
+          >Contact Me via Email</a
+        >
+
+        <div class="divider">OR</div>
+
+        <div class="instructions">
+          <strong>How to enable JavaScript:</strong>
+          <ol>
+            <li>Open your browser settings</li>
+            <li>Search for "JavaScript"</li>
+            <li>Enable JavaScript for this site</li>
+            <li>Refresh this page</li>
+          </ol>
+        </div>
+      </div>
+    </noscript>
+
+    <!-- Main App Root -->
+    <div id="root"></div>
+  </body>
 </html>

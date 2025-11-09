@@ -23,7 +23,7 @@ const Hero = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.22, 1, 0.36, 1], // Custom easing for smooth effect
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   };
@@ -62,15 +62,15 @@ const Hero = () => {
               className="space-y-2 sm:space-y-3"
             >
               <p className="text-sky-600 dark:text-sky-400 font-medium tracking-wide uppercase text-xs sm:text-sm">
-                Web Developer
+                Web Designer & Developer
               </p>
-              <h1 className="text-3xl xs:text-4xl sm:text-5xl lg:text-4xl xl:text-5xl font-bold leading-tight sm:leading-tight lg:leading-tight">
-                Building digital{" "}
-                <span className="text-sky-600 dark:text-sky-400">products</span>
-                , brands and{" "}
+              <h1 className="text-4xl xs:text-4xl sm:text-5xl lg:text-5xl xl:text-5xl font-bold leading-tight sm:leading-tight lg:leading-tight">
+                Design & build{" "}
                 <span className="text-sky-600 dark:text-sky-400">
-                  experiences
-                </span>
+                  custom websites
+                </span>{" "}
+                that grow your{" "}
+                <span className="text-sky-600 dark:text-sky-400">business</span>
                 .
               </h1>
             </motion.div>
@@ -79,8 +79,11 @@ const Hero = () => {
               variants={itemVariants}
               className="text-sm xs:text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl"
             >
-              Hi, I'm Bo Nai, a developer crafting exceptional web experiences
-              with clean code and modern design.
+              Hi, I'm{" "}
+              <strong className="text-gray-900 dark:text-white">Bo Nai</strong>.
+              I help businesses stand out online with beautiful, high-performing
+              websites. Need a redesign or a new site? I bring your vision to
+              life.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -92,9 +95,10 @@ const Hero = () => {
                 href="#projects"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="group inline-flex items-center gap-3 px-6 xs:px-8 py-3 xs:py-4 bg-sky-600 hover:bg-sky-700 text-white rounded-lg xs:rounded-xl font-medium transition-all duration-300 text-base xs:text-lg"
+                className="group inline-flex items-center gap-3 px-6 xs:px-8 py-3 xs:py-4 bg-sky-600 hover:bg-sky-700 text-white rounded-lg xs:rounded-xl font-medium transition-all duration-300 text-base xs:text-lg shadow-lg hover:shadow-xl"
+                aria-label="View my portfolio projects"
               >
-                View Work
+                See My Work
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform duration-300 text-base xs:text-lg" />
               </motion.a>
 
@@ -103,8 +107,9 @@ const Hero = () => {
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-3 px-6 xs:px-8 py-3 xs:py-4 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg xs:rounded-xl font-medium hover:border-sky-600 dark:hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 text-base xs:text-lg"
+                aria-label="Hire me for your project"
               >
-                Contact Me
+                Hire Me
               </motion.a>
             </motion.div>
 
@@ -138,8 +143,12 @@ const Hero = () => {
                 <motion.a
                   key={index}
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={social.href.startsWith("http") ? "_blank" : "_self"}
+                  rel={
+                    social.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                   aria-label={social.label}
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}
@@ -163,8 +172,9 @@ const Hero = () => {
               <div className="relative rounded-2xl xs:rounded-3xl overflow-hidden dark:border-gray-700">
                 <img
                   src={BoImg}
-                  alt="Bo Nai"
+                  alt="Bo Nai - Full-Stack Web Developer"
                   className="w-full h-auto object-cover"
+                  loading="eager"
                 />
               </div>
             </div>
