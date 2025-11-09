@@ -1,176 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#667eea" />
-    <meta
-      name="description"
-      content="Bo Nai - Web Developer Portfolio. Crafting modern, responsive web experiences with cutting-edge technologies."
-    />
-    <meta
-      name="keywords"
-      content="web developer, portfolio, react, javascript, frontend developer, Bo Nai"
-    />
-    <meta name="author" content="Bo Nai" />
-
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Bo Nai | Web Developer" />
-    <meta
-      property="og:description"
-      content="Crafting modern, responsive web experiences with cutting-edge technologies."
-    />
-
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <title>Bo Nai | Web Developer</title>
-  </head>
-  <body>
-    <noscript>
-      <style>
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
-        body {
-          font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-            sans-serif;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 100vh;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          padding: 2rem;
-        }
-
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0284c7" />
+  <meta name="description" content="Bo Nai - Web Developer Portfolio. Crafting modern, responsive web experiences with cutting-edge technologies." />
+  <meta name="keywords" content="web developer, portfolio, react, javascript, frontend developer, Bo Nai" />
+  <meta name="author" content="Bo Nai" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bo Nai | Web Developer" />
+  <meta property="og:description" content="Crafting modern, responsive web experiences with cutting-edge technologies." />
+  
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <title>Bo Nai | Web Developer</title>
+</head>
+<body>
+  <noscript>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #f8fafc;
+        padding: 2rem;
+      }
+      
+      .container {
+        background: white;
+        border-radius: 20px;
+        padding: 3rem 2.5rem;
+        max-width: 500px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        border-top: 4px solid #0284c7;
+      }
+      
+      .icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: #0284c7;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+      }
+      
+      h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1a202c;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+      
+      p {
+        font-size: 1rem;
+        color: #4a5568;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+      
+      .cta {
+        display: inline-block;
+        background: #0284c7;
+        color: white;
+        text-decoration: none;
+        padding: 0.875rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: background 0.2s, transform 0.2s;
+      }
+      
+      .cta:hover {
+        background: #0369a1;
+        transform: translateY(-2px);
+      }
+      
+      .divider {
+        margin: 2rem 0 1.5rem;
+        color: #cbd5e0;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      
+      .instructions {
+        background: #f1f5f9;
+        border-radius: 12px;
+        padding: 1.25rem;
+        font-size: 0.875rem;
+        color: #4a5568;
+        text-align: left;
+        line-height: 1.6;
+        border-left: 3px solid #0284c7;
+      }
+      
+      .instructions strong {
+        color: #2d3748;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      
+      @media (max-width: 640px) {
         .container {
-          background: white;
-          border-radius: 20px;
-          padding: 3rem 2.5rem;
-          max-width: 500px;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-          text-align: center;
+          padding: 2rem 1.5rem;
         }
-
-        .icon {
-          width: 80px;
-          height: 80px;
-          margin: 0 auto 1.5rem;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 2.5rem;
-        }
-
+        
         h1 {
-          font-size: 1.75rem;
-          font-weight: 700;
-          color: #1a202c;
-          margin-bottom: 1rem;
-          letter-spacing: -0.02em;
+          font-size: 1.5rem;
         }
-
+        
         p {
-          font-size: 1rem;
-          color: #4a5568;
-          line-height: 1.7;
-          margin-bottom: 2rem;
+          font-size: 0.9375rem;
         }
-
-        .cta {
-          display: inline-block;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          text-decoration: none;
-          padding: 0.875rem 2rem;
-          border-radius: 50px;
-          font-weight: 600;
-          font-size: 0.95rem;
-          transition: transform 0.2s, box-shadow 0.2s;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .cta:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
-        }
-
-        .divider {
-          margin: 2rem 0 1.5rem;
-          color: #cbd5e0;
-          font-size: 0.875rem;
-          font-weight: 600;
-        }
-
-        .instructions {
-          background: #f7fafc;
-          border-radius: 12px;
-          padding: 1.25rem;
-          font-size: 0.875rem;
-          color: #4a5568;
-          text-align: left;
-          line-height: 1.6;
-        }
-
-        .instructions strong {
-          color: #2d3748;
-          display: block;
-          margin-bottom: 0.5rem;
-        }
-
-        @media (max-width: 640px) {
-          .container {
-            padding: 2rem 1.5rem;
-          }
-
-          h1 {
-            font-size: 1.5rem;
-          }
-
-          p {
-            font-size: 0.9375rem;
-          }
-        }
-      </style>
-
-      <div class="container">
-        <div class="icon">⚡</div>
-        <h1>JavaScript Required</h1>
-        <p>
-          This portfolio uses modern web technologies that require JavaScript to
-          function properly. Please enable JavaScript in your browser to view
-          the full experience.
-        </p>
-        <a href="mailto:bonai.work@gmail.com" class="cta"
-          >Contact Me via Email</a
-        >
-
-        <div class="divider">— OR —</div>
-
-        <div class="instructions">
-          <strong>How to enable JavaScript:</strong>
-          Open your browser settings, search for "JavaScript", and toggle it on.
-          Then refresh this page to continue.
-        </div>
+      }
+    </style>
+    
+    <div class="container">
+      <div class="icon">⚡</div>
+      <h1>JavaScript Required</h1>
+      <p>
+        This portfolio uses modern web technologies that require JavaScript to function properly. 
+        Please enable JavaScript in your browser to view the full experience.
+      </p>
+      <a href="mailto:naibo2002@gmail.com" class="cta">Contact Me via Email</a>
+      
+      <div class="divider">— OR —</div>
+      
+      <div class="instructions">
+        <strong>How to enable JavaScript:</strong>
+        Open your browser settings, search for "JavaScript", and toggle it on. 
+        Then refresh this page to continue.
       </div>
-    </noscript>
+    </div>
+  </noscript>
 
-    <div id="root"></div>
-  </body>
+  <div id="root"></div>
+</body>
 </html>
