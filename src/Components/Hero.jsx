@@ -104,7 +104,7 @@ const Hero = () => {
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center gap-3 px-6 xs:px-8 py-3 xs:py-4 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg xs:rounded-xl font-medium hover:border-sky-600 dark:hover:border-sky-400 hover:text-sky-600 dark:hover:text-sky-400 transition-all duration-300 text-base xs:text-lg"
               >
-                Get in Touch
+                Contact Me
               </motion.a>
             </motion.div>
 
