@@ -8,6 +8,9 @@ import {
   FaCheckCircle,
   FaTimesCircle,
   FaTimes,
+  FaGift,
+  FaBolt,
+  FaCheck,
 } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
@@ -50,7 +53,7 @@ const Contact = () => {
         {
           from_name: formData.name,
           from_email: formData.email,
-          subject: formData.subject || "New Contact Form Message",
+          subject: formData.subject || "New Website Redesign Request",
           message: formData.message,
           to_name: "Bo Nai",
           reply_to: formData.email,
@@ -68,7 +71,7 @@ const Contact = () => {
           {
             to_name: formData.name,
             to_email: formData.email,
-            title: formData.subject || "General Inquiry",
+            title: formData.subject || "Website Redesign Inquiry",
             message: formData.message,
             name: "Bo Nai",
             website_url: "https://bo-nai.netlify.app",
@@ -84,7 +87,7 @@ const Contact = () => {
         setSubmitStatus({
           success: true,
           message:
-            "Message sent successfully! You should receive a confirmation email shortly. I'll get back to you within 24-48 hours.",
+            "Request received! You'll get a confirmation email shortly. I'll review your website and send you a demo redesign link within 3-5 business days. Excited to show you what's possible!",
         });
       } catch (autoReplyError) {
         console.warn(
@@ -95,7 +98,7 @@ const Contact = () => {
         setSubmitStatus({
           success: true,
           message:
-            "Message sent successfully! I'll get back to you within 24-48 hours. (Note: Confirmation email may be delayed)",
+            "Request received! I'll review your website and send you a demo redesign link within 3-5 business days. (Note: Confirmation email may be delayed)",
         });
       }
 
@@ -105,7 +108,7 @@ const Contact = () => {
     } catch (error) {
       console.error("Failed to send main email:", error);
 
-      let errorMessage = "Failed to send message. ";
+      let errorMessage = "Failed to send request. ";
 
       if (error.text) {
         errorMessage += `Error: ${error.text}. `;
@@ -243,7 +246,7 @@ const Contact = () => {
                 transition={{ delay: 0.4 }}
                 className="text-xl sm:text-2xl font-bold text-center text-gray-900 dark:text-white mb-3 sm:mb-4"
               >
-                {submitStatus.success ? "Message Sent!" : "Oops!"}
+                {submitStatus.success ? "Request Received!" : "Oops!"}
               </motion.h3>
 
               {/* Message */}
@@ -290,21 +293,45 @@ const Contact = () => {
             variants={fadeUp}
             className="text-sky-600 dark:text-sky-400 font-semibold tracking-wider uppercase text-xs sm:text-sm mb-3 sm:mb-4"
           >
-            Get In Touch
+            Ready to Transform Your Website?
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 px-4"
           >
-            Let's Work Together
+            Get Your Free Demo Redesign
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-4 sm:mb-6 px-4"
           >
-            Ready to bring your ideas to life? Let's discuss your project and
-            create something amazing together.
+            Share your website URL and I'll create a live demo redesign completely free. See the transformation before making any commitment.
           </motion.p>
+          
+          {/* Value Props */}
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-wrap justify-center gap-4 mt-6"
+          >
+            <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+              <FaGift className="text-sky-600 dark:text-sky-400" />
+              <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
+                100% Free Demo
+              </span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+              <FaBolt className="text-sky-600 dark:text-sky-400" />
+              <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
+                3-5 Day Delivery
+              </span>
+            </div>
+            <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+              <FaCheck className="text-sky-600 dark:text-sky-400" />
+              <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">
+                No Commitment
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -321,61 +348,102 @@ const Contact = () => {
               className="p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm"
             >
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
-                Contact Information
+                How It Works
               </h3>
 
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 leading-relaxed">
-                Feel free to reach out if you're looking for a developer, have a
-                question, or just want to connect. I'll get back to you as soon
-                as possible and you'll receive an automatic confirmation email.
-              </p>
-
-              <div className="space-y-4 sm:space-y-6">
-                <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-gray-50 dark:bg-gray-700/50">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400">
-                    <FaEnvelope className="text-base sm:text-xl" />
+              <div className="space-y-4 mb-8">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 dark:text-sky-400 font-bold">
+                    1
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <h4 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white mb-1">
-                      Email
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                      Share Your Website
                     </h4>
-                    <a
-                      href="mailto:naibo2002@gmail.com"
-                      className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors break-all"
-                    >
-                      naibo2002@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-gray-50 dark:bg-gray-700/50">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400">
-                    <FaPhone className="text-base sm:text-xl" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h4 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white mb-1">
-                      Phone
-                    </h4>
-                    <a
-                      href="tel:+85587968850"
-                      className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
-                    >
-                      +855 879 688 50
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-gray-50 dark:bg-gray-700/50">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400">
-                    <FaMapMarkerAlt className="text-base sm:text-xl" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h4 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white mb-1">
-                      Location
-                    </h4>
-                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
-                      Siem Reap, Cambodia
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Fill out the form with your current website URL and what you'd like to improve
                     </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 dark:text-sky-400 font-bold">
+                    2
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                      I Create Your Demo
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Within 3-5 business days, I'll design and build a live demo redesign of your site
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 dark:text-sky-400 font-bold">
+                    3
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                      Review & Decide
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      You'll get a live demo link. Love it? Let's work together. No pressure.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                  Contact Information
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-gray-50 dark:bg-gray-700/50">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400">
+                      <FaEnvelope className="text-base sm:text-xl" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white mb-1">
+                        Email
+                      </h4>
+                      <a
+                        href="mailto:naibo2002@gmail.com"
+                        className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors break-all"
+                      >
+                        naibo2002@gmail.com
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-gray-50 dark:bg-gray-700/50">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400">
+                      <FaPhone className="text-base sm:text-xl" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white mb-1">
+                        Phone
+                      </h4>
+                      <a
+                        href="tel:+85587968850"
+                        className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+                      >
+                        +855 879 688 50
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-gray-50 dark:bg-gray-700/50">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400">
+                      <FaMapMarkerAlt className="text-base sm:text-xl" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-semibold text-sm sm:text-base text-gray-900 dark:text-white mb-1">
+                        Location
+                      </h4>
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+                        Siem Reap, Cambodia
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -389,10 +457,10 @@ const Contact = () => {
               className="p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm"
             >
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
-                Send Me a Message
+                Request Your Free Demo
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                 <div>
                   <label
                     htmlFor="name"
@@ -438,7 +506,7 @@ const Contact = () => {
                     htmlFor="subject"
                     className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2"
                   >
-                    Subject
+                    What would you like to improve?
                   </label>
                   <input
                     type="text"
@@ -448,7 +516,7 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base bg-gray-50 dark:bg-gray-700 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white dark:focus:bg-gray-600 dark:text-white transition-all duration-300"
                     disabled={isSubmitting}
-                    placeholder="Project inquiry, collaboration, etc."
+                    placeholder="e.g., Modern design, better mobile experience, faster loading..."
                   />
                 </div>
 
@@ -457,7 +525,7 @@ const Contact = () => {
                     htmlFor="message"
                     className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2"
                   >
-                    Message
+                    Additional Details
                   </label>
                   <textarea
                     id="message"
@@ -468,13 +536,13 @@ const Contact = () => {
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base bg-gray-50 dark:bg-gray-700 rounded-lg sm:rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:bg-white dark:focus:bg-gray-600 dark:text-white transition-all duration-300 resize-none"
                     required
                     disabled={isSubmitting}
-                    placeholder="Tell me about your project or inquiry..."
+                    placeholder="Tell me about your business, target audience, and what you'd like to achieve with the redesign..."
                   ></textarea>
                 </div>
 
                 <motion.button
                   type="submit"
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-sky-600 text-white rounded-lg sm:rounded-xl hover:bg-sky-700 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 shadow-sm hover:shadow-md disabled:opacity-70 text-sm sm:text-base font-semibold"
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-sky-600 text-white rounded-lg sm:rounded-xl hover:bg-sky-700 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 shadow-lg hover:shadow-xl disabled:opacity-70 text-sm sm:text-base font-semibold"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}
@@ -501,19 +569,31 @@ const Contact = () => {
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         ></path>
                       </svg>
-                      <span className="text-sm sm:text-base">Sending...</span>
+                      <span className="text-sm sm:text-base">Submitting...</span>
                     </>
                   ) : (
                     <>
                       <FaPaperPlane className="text-base sm:text-lg" />
-                      <span>Send Message</span>
+                      <span>Request Free Demo Redesign</span>
                     </>
                   )}
                 </motion.button>
 
-                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center mt-3 sm:mt-4 leading-relaxed px-2">
-                  📧 You'll receive an automatic confirmation email after
-                  submitting
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center mt-3 sm:mt-4 leading-relaxed px-2 flex items-center justify-center gap-2 flex-wrap">
+                  <span className="flex items-center gap-1">
+                    <FaGift className="text-sky-500" />
+                    Completely free
+                  </span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <FaBolt className="text-sky-500" />
+                    3-5 day delivery
+                  </span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <FaCheck className="text-sky-500" />
+                    No credit card required
+                  </span>
                 </p>
               </form>
             </motion.div>

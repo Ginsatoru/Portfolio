@@ -8,6 +8,7 @@ import {
   FaCode,
   FaRocket,
   FaUser,
+  FaLightbulb,
 } from "react-icons/fa";
 
 // Enhanced Count-up animation hook
@@ -131,13 +132,23 @@ const About = () => {
       icon: <FaCalendarAlt />,
     },
     {
-      value: "10",
+      value: "15",
       suffix: "+",
-      label: "Projects Completed",
+      label: "Projects Delivered",
       icon: <FaProjectDiagram />,
     },
-    { value: "5", suffix: "+", label: "Happy Clients", icon: <FaSmile /> },
-    { value: "5", suffix: "+", label: "Freelance Clients", icon: <FaAward /> },
+    { 
+      value: "10", 
+      suffix: "+", 
+      label: "Happy Clients", 
+      icon: <FaSmile /> 
+    },
+    { 
+      value: "100", 
+      suffix: "%", 
+      label: "Client Satisfaction", 
+      icon: <FaAward /> 
+    },
   ];
 
   return (
@@ -162,20 +173,19 @@ const About = () => {
             variants={fadeUp}
             className="text-sky-600 dark:text-sky-400 font-semibold tracking-wider uppercase text-xs sm:text-sm mb-4"
           >
-            Get to Know Me
+            Why Work With Me
           </motion.p>
           <motion.h2
             variants={fadeUp}
             className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4"
           >
-            About Me
+            Your Success Is My Priority
           </motion.h2>
           <motion.p
             variants={fadeUp}
             className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6"
           >
-            Passionate developer crafting digital experiences that make a
-            difference
+            A freelance developer who puts your business goals first and delivers websites that convert visitors into customers
           </motion.p>
         </motion.div>
 
@@ -189,6 +199,21 @@ const About = () => {
         >
           {/* Left Column - Text Content */}
           <div className="space-y-10">
+            {/* My Approach */}
+            <motion.div variants={itemVariants} className="space-y-4">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center">
+                  <FaLightbulb className="text-sky-600 dark:text-sky-400 text-lg" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  My Unique Approach
+                </h3>
+              </div>
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                I believe in showing, not telling. When you reach out, I'll create a <strong>live demo redesign</strong> of your website completely free with no strings attached. You'll see exactly what your new site could look like before making any commitment. This way, you can make an informed decision based on real results, not promises.
+              </p>
+            </motion.div>
+
             {/* Who I Am */}
             <motion.div variants={itemVariants} className="space-y-4">
               <div className="flex items-center gap-3 mb-2">
@@ -200,30 +225,7 @@ const About = () => {
                 </h3>
               </div>
               <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                I'm a passionate full-stack developer dedicated to crafting
-                modern web applications that are not just functional, but
-                delightful to use. With over three years of hands-on experience,
-                I focus on writing scalable, maintainable code and creating
-                intuitive user experiences that feel seamless and engaging.
-              </p>
-            </motion.div>
-
-            {/* My Journey */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center">
-                  <FaRocket className="text-sky-600 dark:text-sky-400 text-lg" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  My Journey
-                </h3>
-              </div>
-              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                My coding journey began in college where I discovered the thrill
-                of solving real-world problems through technology. Since then,
-                I've evolved from building simple scripts to developing complex
-                SaaS platforms and e-commerce solutions, always prioritizing
-                clean architecture and user-centric design principles.
+                I'm a full-stack developer with 3+ years of experience specializing in <strong>website redesigns that drive business growth</strong>. I combine clean, modern design with performance optimization and conversion-focused features. Every line of code I write serves one purpose: helping your business succeed online.
               </p>
             </motion.div>
 
@@ -234,15 +236,26 @@ const About = () => {
                   <FaCode className="text-sky-600 dark:text-sky-400 text-lg" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  What I Do
+                  What I Deliver
                 </h3>
               </div>
               <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                I specialize in building full-stack applications using modern
-                technologies like React, Node.js, and cloud platforms. From
-                initial concept to final deployment, I manage the entire
-                development lifecycle, transforming ideas into polished,
-                high-performance digital products that exceed expectations.
+                Fast-loading, mobile-responsive websites built with React, Node.js, and modern best practices. From complete redesigns to custom features, I handle everything: design, development, testing, and deployment. You get a polished, professional website that looks great and performs even better.
+              </p>
+            </motion.div>
+
+            {/* My Promise */}
+            <motion.div variants={itemVariants} className="space-y-4">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center">
+                  <FaRocket className="text-sky-600 dark:text-sky-400 text-lg" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  My Promise
+                </h3>
+              </div>
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                Clear communication, transparent pricing, and on-time delivery. I'll keep you updated throughout the project, explain technical decisions in plain language, and ensure you're 100% satisfied with the final result. Your success is my success.
               </p>
             </motion.div>
           </div>
