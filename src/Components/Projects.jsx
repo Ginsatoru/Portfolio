@@ -15,7 +15,7 @@ const projects = [
     technologies: ["HTML5", "Tailwind CSS", "JavaScript", "AOS"],
     image: diamondBayImg,
     demoLink: "https://diamondbaybowlingclub.netlify.app/",
-    codeLink: "#",
+    codeLink: "https://github.com/Ginsatoru/diamondbay",
     businessImpact: "Enhanced online visibility & bookings",
   },
   {
