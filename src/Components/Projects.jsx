@@ -1,22 +1,22 @@
 import { motion } from "framer-motion";
 import { FiExternalLink, FiGithub, FiUser, FiTarget, FiTrendingUp } from "react-icons/fi";
-import ecommerceImg from "../Images/ecommerce.png";
+import diamondBayImg from "../Images/ecommerce.png";
 import IT from "../Images/IT.png";
 import Hotel from "../Images/Hotel.png";
 
 const projects = [
   {
-    title: "E-commerce Platform",
+    title: "Business Website",
     description:
-      "A conversion-optimized e-commerce platform featuring streamlined product browsing, seamless cart experience, and secure checkout flow designed to maximize sales.",
-    role: "Full-stack Developer & UX Designer",
-    challenge: "Client needed faster checkout and improved mobile experience to reduce cart abandonment rates.",
-    result: "45% faster checkout process, 60% improvement in mobile conversions, and 2.3s faster page loads driving increased revenue.",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe API"],
-    image: ecommerceImg,
-    demoLink: "#",
+      "A modern, responsive website for a community bowling club featuring elegant design, smooth animations, and intuitive navigation that showcases their facilities, services, and membership options.",
+    role: "Frontend Developer & UI Designer",
+    challenge: "Club needed a professional online presence to attract new members, promote barefoot bowls bookings, and showcase their venue for functions and events.",
+    result: "Fully responsive design with AOS animations, interactive mobile sidebar navigation, Google Maps integration, and optimized performance for seamless user experience.",
+    technologies: ["HTML5", "Tailwind CSS", "JavaScript", "AOS"],
+    image: diamondBayImg,
+    demoLink: "https://diamondbaybowlingclub.netlify.app/",
     codeLink: "#",
-    businessImpact: "Increased monthly revenue by 35%",
+    businessImpact: "Enhanced online visibility & bookings",
   },
   {
     title: "IT Services Platform",
